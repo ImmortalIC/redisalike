@@ -39,7 +39,7 @@ func storekeeper(ctx context.Context) {
 	for {
 		select {
 		case <-ctx.Done():
-			break
+			return
 		case writeTask := <-writeChannel:
 			storageObject[writeTask.key] = writeTask.value
 			writeTask.resp <- response{Value: nil, Err: nil}
